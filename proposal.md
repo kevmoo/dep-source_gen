@@ -1,4 +1,4 @@
-# Source generation in Dart
+# Source generation in Dart - PRE-DRAFT
 
 ## Contact information
 
@@ -29,6 +29,19 @@ A proposal for a standardized, fast, tool-able, debug-able, source code generati
   * Result: Angular and Polymer eliminate their usage of transformers while maintaining the same or better runtime characteristics.
 * Support on-disk code generation – leveraging the external library work – so generated code can have the same visibility as hand-written code.
   * Result: Debugging generated code is as easy as debugging hand-written code.
+  * Result: Debugging a code generator is straight-forward.
+
+## Requirements
+
+* Maintain a strict separation between user-generated and code-generated source.
+  * Provide a strong naming and/or location semantic to distinguish the two.
+  * Forbid overwriting user-created code files.
+* Allow files to be generated "next to" the Dart files they are associated with.
+  * Allow the generated component of `lib/foo.dart` to be generated at `lib/foo.g.dart` or `lib/generated/foo.dart` or similar.
+  * Essential for packages with generated code. Packages should include generated code when published.
+* Allow files to be generated in a way that allows easy exclusion from source management tools.
+  * Google's internal source management tools discourage committing generated source.
+
 
 ## Examples
 
