@@ -46,15 +46,59 @@ A proposal for a standardized, fast, tool-able, debug-able, source code generati
 
 ## Examples
 
-*tbd*
+### Angular 2 Bootstrap
+
+*Hand authored*
+```dart
+// app.dart
+
+part 'app.g.dart';
+
+void main() {
+  bootstrap(MyApp);
+}
+
+@generateBootstrap
+Future<ApplicationRef> bootstrap(Type appComponentType,
+    [List componentInjectableBindings]);
+
+```
+
+*Generated*
+
+```dart
+// app.g.dart
+
+Future<ApplicationRef> bootstrap(Type appComponentType,
+    [List componentInjectableBindings]) {
+
+  // register reflective access
+  // call core bootstrap method
+}
+
+```
+
+### JSON serialization
+
+### Polymer observables
 
 ## Proposal
 
 *tbd*
 
+### Dependencies
+
+* Language
+  * ??? *partial classes*.
+  * ??? Something that looks like abstract top-level members.
+
 ## Alternatives
 
-*tbd*
+### Member Interceptors
+
+https://github.com/sigmundch/DEP-member-interceptors/blob/master/proposal.md
+
+*Details TBD*
 
 ## Implications and limitations
 
