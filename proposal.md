@@ -24,8 +24,8 @@ A proposal for a standardized, fast, tool-able, debug-able, source code generati
 
 ## Goals
 
-* Developers are concerned about the speed of source generation, even for large projects.
-  * Result: Cut by half (at least) the time spent in code generation for large applications compared to the current transformer-based solution.
+* Eliminate speed concerns for developers using source generation (currently Transformers), especially for large projects.
+  * Result: Cut by half (or more? An absolute value?) the time spent in code generation for large applications compared to the current transformer-based solution.
 * Support the existing use cases for Angular and Polymer.
   * Result: Angular and Polymer eliminate their usage of transformers while maintaining the same or better runtime characteristics.
 * Support on-disk code generation so generated code can have the same visibility as hand-written code.
@@ -52,6 +52,10 @@ A proposal for a standardized, fast, tool-able, debug-able, source code generati
 ```dart
 // app.dart
 
+import 'package:angular2/angular2.dart';
+import 'package:angular2/bootstrap.dart';
+
+// @Generate(package:angular2/bootstrap.dart)
 part 'app.g.dart';
 
 void main() {
@@ -80,11 +84,93 @@ Future<ApplicationRef> bootstrap(Type appComponentType,
 
 ### JSON serialization
 
+*Hand authored*
+```dart
+// customer.dart
+
+import 'package:json_serial/json_serial.dart';
+
+part 'customer.g.dart';
+
+@JsonSerializable
+partial class Customer {
+  final int id;
+  final String firstName, lastName;
+
+  Customer(this.id, this.firstName, this.lastName);
+
+  factory Customer.fromJson(json);
+
+  Map<String, dynamic> toJson();
+}
+
+```
+
+*Generated*
+
+```dart
+// customer.g.dart
+
+partial class Customer {
+  factory Customer.fromJson(json) =>
+      new Customer(json['id'], json['firstName'], json['lastName']);
+
+  Map<String, dynamic> toJson() =>
+      {
+        'id': id,
+        'firstName': firstName,
+        'lastName': lastName
+      };
+}
+```
+
 ### Polymer observables
+
+
+*Hand authored*
+```dart
+// customer.dart
+
+import 'package:observable/observable.dart';
+
+part 'customer.g.dart';
+
+partial class Customer extends Observable {
+  @observable String firstName;
+}
+
+```
+
+*Generated*
+
+```dart
+// customer.g.dart
+
+partial class Customer {
+  String _firstName;
+  String get firstName => _firstName;
+  set firstName(String newValue) {
+    var oldValue = _firstName;
+    _firstName = newValue;
+    notifyChanges(#firstName, oldValue, newValue);
+  }
+}
+```
 
 ## Proposal
 
-*tbd*
+```dart
+Future pseudoCode(project) async {
+
+  var generators = await getConfiguredGenerators(project);
+
+
+
+
+
+
+}
+```
 
 ### Dependencies
 
@@ -110,3 +196,7 @@ https://github.com/sigmundch/DEP-member-interceptors/blob/master/proposal.md
 
 * [Introduction from blog](https://blog.golang.org/generate)
 * [Proposal](https://docs.google.com/document/d/1V03LUfjSADDooDMhe-_K59EgpTEm3V8uvQRuNMAEnjg/edit)
+
+### Rust
+
+*TODO*
