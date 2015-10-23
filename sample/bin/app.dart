@@ -8,7 +8,7 @@ import 'package:sample/bootstrap.dart';
 
 import 'src/component.dart';
 
-@sg.GeneratedPart('package:injection/generator.dart')
+@sg.GeneratedPart('package:sample/generator.dart')
 part 'app.injection.dart';
 
 main() async {
