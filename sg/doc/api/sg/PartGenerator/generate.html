@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>generate method - PartGenerator class - sg library - Dart API</title>
+    <!-- required because all the links are pseudo-absolute -->
+    <base href="../..">
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="static-assets/prettify.css">
+    <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static-assets/styles.css">
+
+    <meta name="description" content="API docs for the generate method from the PartGenerator class, for the Dart programming language.">
+    <link rel="icon" href="static-assets/favicon.png">
+
+    <!-- Do not remove placeholder -->
+    <!-- Header Placeholder -->
+</head>
+
+<body>
+
+<div id="overlay-under-drawer"></div>
+
+<header class="container-fluid" id="title">
+    <nav class="navbar navbar-fixed-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 contents">
+              <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+              <ol class="breadcrumbs gt-separated hidden-xs">
+                  <li><a href="index.html">sg</a></li>
+                  <li><a href="sg/sg-library.html">sg</a></li>
+                  <li><a href="sg/PartGenerator-class.html">PartGenerator</a></li>
+                  <li class="self-crumb">generate</li>
+              </ol>
+              <div class="self-name">generate</div>
+              <form class="search navbar-right" role="search">
+                <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+              </form>
+            </div> <!-- /col -->
+          </div> <!-- /row -->
+        </div> <!-- /container -->
+    </nav>
+
+    <div class="container masthead">
+      <div class="row">
+        <div class="col-sm-12 contents">
+          <ol class="breadcrumbs gt-separated visible-xs">
+              <li><a href="index.html">sg</a></li>
+              <li><a href="sg/sg-library.html">sg</a></li>
+              <li><a href="sg/PartGenerator-class.html">PartGenerator</a></li>
+              <li class="self-crumb">generate</li>
+          </ol>
+          <div class="title-description">
+              <h1 class="title">
+                  <div class="kind">method</div> generate
+              </h1>
+          </div>
+          <ul class="subnav">
+              <li><a href="sg/PartGenerator/generate.html#source">Source</a></li>
+          </ul>
+        </div> <!-- /col -->
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+
+</header>
+
+<div class="container body">
+  <div class="row">
+
+  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <h5><a href="index.html">sg</a></h5>
+    <h5><a href="sg/sg-library.html">sg</a></h5>
+    <h5><a href="sg/PartGenerator-class.html">PartGenerator</a></h5>
+
+    <ol>
+    
+    
+    
+      <li class="section-title"><a href="sg/PartGenerator-class.html#instance-properties">Properties</a></li>
+      <li><a class="" href="sg/PartGenerator/hashCode.html">hashCode</a></li>
+      <li><a class="" href="sg/PartGenerator/runtimeType.html">runtimeType</a></li>
+    
+      <li class="section-title"><a href="sg/PartGenerator-class.html#constructors">Constructors</a></li>
+      <li><a href="sg/PartGenerator/PartGenerator.html">PartGenerator</a></li>
+    
+      <li class="section-title"><a href="sg/PartGenerator-class.html#operators">Operators</a></li>
+      <li><a class="" href="sg/PartGenerator/operator_equals.html">operator ==</a></li>
+    
+      <li class="section-title"><a href="sg/PartGenerator-class.html#instance-methods">Methods</a></li>
+      <li><a class="" href="sg/PartGenerator/generate.html">generate</a></li>
+      <li><a class="" href="sg/PartGenerator/loadCache.html">loadCache</a></li>
+      <li><a class="" href="sg/PartGenerator/noSuchMethod.html">noSuchMethod</a></li>
+      <li><a class="" href="sg/PartGenerator/toString.html">toString</a></li>
+      <li><a class="" href="sg/PartGenerator/writeCache.html">writeCache</a></li>
+    </ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+
+    <section class="multi-line-signature">
+        <div>
+            <ol class="annotation-list">
+                <li>override</li>
+            </ol>
+        </div>
+        <span class="returntype">Future&lt;<a class="" href="sg/FileOutput-class.html">FileOutput</a>&gt;</span>
+        <span class="name ">generate</span>(<wbr><span class="parameter" id="generate-param-libraryElement"><span class="type-annotation">LibraryElement</span> <span class="parameter-name">libraryElement</span></span>)
+    </section>
+
+    <section class="desc markdown">
+    
+          <p>This method is implemented by subclasses.</p>
+<p>All of the reading/writing of caches is handled here. The creator of the
+generator just gets the <code>LibraryElement</code> instance
+(without generated parts) and is expected to return the content of a part.</p>
+<h3>Open design questions</h3><ul><li>
+<p><code>part of</code> declarations:</p><ul><li>The generated output will need to have a <code>part of</code> declaration.</li><li>Could/should there be a way to handle that?</li><li>Maybe another override which has the subclass provide the part contents?</li><li>
+<p>Or the user can just pick up the library name from the library
+   element?</p></li><li>
+<p>Again, since the code is likely generated into the project,
+   tools can pick up things like missing or mis-labeled library names.</p></li></ul></li><li>
+<p>Convention to report back to the host library that imports are needed?</p></li><li>
+<p>Utilities to help the part writer discover/access available members</p><ul><li>test bullet</li></ul></li></ul>
+    
+    </section>
+
+    <section class="summary source-code" id="source">
+      <h2><span>Source</span> </h2>
+      <pre><code class="prettyprint lang-dart">// TODO: not strictly needed. Here to document pass-through abstract method
+@override
+Future&lt;FileOutput&gt; generate(LibraryElement libraryElement);</code></pre>
+    </section>
+
+  </div> <!-- /.main-content -->
+
+  </div> <!-- row -->
+</div> <!-- container -->
+
+<footer>
+    <div class="container-fluid">
+        <div class="container">
+            <p class="text-center">
+                <span class="no-break">
+                  sg 
+                </span>
+                &bull;
+                <span class="no-break">
+                  <a href="https://www.dartlang.org">
+                    <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
+                  </a>
+                </span>
+                &bull;
+                <span class="copyright no-break">
+                  <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
+                </span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/prettify.js"></script>
+<script src="static-assets/script.js"></script>
+<!-- Do not remove placeholder -->
+<!-- Footer Placeholder -->
+
+<!-- Made with <3 by dartdoc version 0.7.3 -->
+</body>
+
+</html>
