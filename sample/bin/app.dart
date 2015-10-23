@@ -2,13 +2,13 @@ library project.my_app;
 
 import 'dart:async';
 
-import 'package:sg/annotation.dart' as sg;
+import 'package:sg/annotation.dart' as sga;
 
 import 'package:sample/bootstrap.dart';
 
 import 'src/component.dart';
 
-@sg.GeneratedPart('package:sample/generator.dart')
+@sga.GeneratedPart('package:sample/generator.dart')
 part 'app.injection.dart';
 
 main() async {

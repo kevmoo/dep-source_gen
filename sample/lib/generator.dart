@@ -6,7 +6,7 @@ library injection.generator;
 import 'dart:async';
 
 import 'package:analyzer/src/generated/element.dart';
-import 'package:sg/part_generator.dart';
+import 'package:sg/sg.dart';
 
 /// `extend` (maybe `implement`) a `Generator` base class.
 ///
